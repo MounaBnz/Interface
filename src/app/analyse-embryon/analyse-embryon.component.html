@@ -1,5 +1,3 @@
-<!-- <p>analyse-embryon works!</p> -->
-<!-- <app-header></app-header> -->
 <app-header></app-header>
 <div class="container" role="main">
   <div class="logo-container">
@@ -15,25 +13,19 @@
   </div>
   <form (ngSubmit)="onSubmit()" #cvForm="ngForm" novalidate>
     <div class="upload-section">
-      <label for="cvUpload"><i class="fas fa-file-upload"></i> Téléchargez votre image (format):</label>
-      <input type="file" (change)="onFileSelected($event)" id="cvUpload" name="cvUpload" required>
+      <label for="cvUpload"><i class="fas fa-file-upload"></i> Téléchargez votre image (PNG, JPEG):</label>
+      <input type="file" accept="image/png, image/jpeg, image/jpg" (change)="onFileSelected($event)" id="cvUpload" name="cvUpload" required>
       <div *ngIf="fileErrorMsg" class="error">{{ fileErrorMsg }}</div>
     </div>
     <button type="submit" class="btn-analyze"><i class="fas fa-analysis"></i> Analyser l'embryon</button>
   </form>
 
-<!-- Display Results Dynamically -->
-<!-- <div *ngIf="analysisResults" class="mt-4">
-  <h3>Les Résultats de l'analyse : </h3>
-  <div *ngFor="let field of analysisResults.fields">
-    <div class="card">
-      <div class="card-header">{{ field.key | titlecase }}</div>
-      <div class="card-body">{{ field.value }}</div>
+  <!-- Display Results Dynamically -->
+  <div *ngIf="analysisResults" class="mt-4">
+    <h3>Les Résultats de l'analyse : </h3>
+    <div class="alert alert-success">
+      <strong>Les résultats:</strong> {{ analysisResults?.score }}<br>
+      <strong>Class:</strong> {{ analysisResults?.class }}
     </div>
   </div>
-  <div class="alert alert-success">
-    <strong>Les résultats:</strong> {{ analysisResults?.match_percentage }}<br>
-    <strong>Explanation:</strong> {{ analysisResults?.explanation }}
-  </div> -->
-
 </div>
