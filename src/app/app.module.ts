@@ -10,6 +10,7 @@ import { AnalyseEmbryonComponent } from './analyse-embryon/analyse-embryon.compo
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './login/login.component';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     HeaderComponent,
     AnalyseEmbryonComponent,
-    LoginComponent
+    LoginComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
