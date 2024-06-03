@@ -5,9 +5,16 @@
       <img [src]="analysisResults.imageUrl" alt="Uploaded Embryo Image">
     </div>
     <div class="results">
-      <strong>Score:</strong> {{ analysisResults?.score }}<br>
+      <strong>Score:</strong>
+      <div *ngIf="analysisResults?.score">
+          <span *ngFor="let percentage of analysisResults.score; let i = index">
+              {{ percentage }}%<span *ngIf="i < analysisResults.score.length - 1">, </span>
+          </span>
+      </div>
+      <br>
       <strong>Class:</strong> {{ analysisResults?.class }}
-    </div>
+  </div>
+
     <div class="masks-container">
       <h4>Predicted Masks:</h4>
       <div class="mask" *ngFor="let mask of analysisResults?.masks">
