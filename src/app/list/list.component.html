@@ -1,4 +1,3 @@
-<!-- <p>list works!</p> -->
 <div class="container">
   <h2>Your Analyzed Embryo</h2>
   <div *ngIf="analysisResults">
@@ -8,6 +7,12 @@
     <div class="results">
       <strong>Score:</strong> {{ analysisResults?.score }}<br>
       <strong>Class:</strong> {{ analysisResults?.class }}
+    </div>
+    <div class="masks-container">
+      <h4>Predicted Masks:</h4>
+      <div class="mask" *ngFor="let mask of analysisResults?.masks">
+        <img [src]="mask" alt="Predicted Mask">
+      </div>
     </div>
     <div class="comments-section">
       <h3>Notes:</h3>

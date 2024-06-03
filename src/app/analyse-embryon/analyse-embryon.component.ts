@@ -41,6 +41,7 @@ export class AnalyseEmbryonComponent {
           this.analysisResults = response;
           console.log('Analysis Results:', this.analysisResults);
           this.toastr.success('Your embryo has been successfully analyzed!', 'Success');
+          localStorage.setItem('analysisResults', JSON.stringify(this.analysisResults));
           this.router.navigate(['/list']); // Navigate to list
         },
         (error) => {
@@ -54,4 +55,5 @@ export class AnalyseEmbryonComponent {
       this.toastr.error('Please ensure all fields are filled correctly.', 'Missing Information!');
     }
   }
+
 }
