@@ -11,7 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './login/login.component';
 import { ListComponent } from './list/list.component';
-
+import { MaterialModule } from './material.module';
+// import { ButtonModule } from 'primeng/button';
+// import { CardModule } from 'primeng/card';
+// import { FileUploadModule } from 'primeng/fileupload';
+// import { InputTextModule } from 'primeng/inputtext';
+// import { ToastModule } from 'primeng/toast';
+// import { ToolbarModule } from 'primeng/toolbar';
+// import { MessagesModule } from 'primeng/messages';
+// import { MessageModule } from 'primeng/message';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +33,7 @@ import { ListComponent } from './list/list.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    MaterialModule,
     FormsModule, // Add FormsModule here
     HttpClientModule, //backend
     ToastrModule.forRoot({

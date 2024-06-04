@@ -11,6 +11,23 @@ body {
   display: flex;
   flex-direction: column;
 }
+/* Add any custom styles here */
+
+/* Custom styles for specific elements */
+
+/* Example of a custom class for better preview image styling */
+.preview {
+  max-width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.error {
+  color: #FF4136;
+  margin-top: 5px;
+}
+
 
 .logo-container {
   display: flex;

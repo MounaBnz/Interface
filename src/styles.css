@@ -1,1 +1,222 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Container */
+.container {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f4f4f8;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+}
+
+/* Logo */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  max-width: 100px;
+  height: auto;
+}
+
+/* Title */
+.title {
+  color: #050B24;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  animation: slideInFromLeft 0.5s ease-out; /* Slide-in animation */
+}
+
+/* Instructions */
+.instructions {
+  margin-bottom: 2rem;
+  text-align: left;
+  animation: fadeInUp 0.8s ease-in-out; /* Fade-in from bottom */
+}
+
+.instructions p,
+.instructions ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.instructions p {
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.instructions ul {
+  padding-left: 20px;
+}
+
+.instructions ul li {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Form Sections */
+.upload-section,
+.description-section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+  gap: 10px;
+  animation: fadeInUp 1s ease-in-out; /* Fade-in from bottom */
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #050B24;
+  font-weight: 600;
+}
+
+/* Inputs and Textarea */
+input[type="file"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type="file"]:focus,
+textarea:focus {
+  border-color: #66afe9;
+  outline: none;
+}
+
+/* Buttons */
+.btn-clear,
+.btn-analyze {
+  display: block;
+  width: auto;
+  padding: 12px 25px;
+  font-size: 1rem;
+  margin: 1rem auto;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  animation: fadeInUp 1.2s ease-in-out; /* Fade-in from bottom */
+}
+
+.btn-clear {
+  background-color: #f44336;
+}
+
+.btn-clear:hover,
+.btn-clear:focus {
+  background-color: #d32f2f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(211, 47, 47, 0.2);
+}
+
+.btn-analyze {
+  background-color: #20afec;
+}
+
+.btn-analyze:hover,
+.btn-analyze:focus {
+  background-color: #1e88e5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(30, 136, 229, 0.2);
+}
+
+/* Error Message */
+.error {
+  color: #FF4136;
+  margin-top: 5px;
+  animation: fadeIn 0.5s ease-in-out; /* Fade-in animation */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .title,
+  .upload-section,
+  .description-section {
+    text-align: left;
+  }
+
+  .btn-analyze,
+  .btn-clear {
+    width: 100%;
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .btn-analyze,
+  .btn-clear {
+    padding: 10px 20px;
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

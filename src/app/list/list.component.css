@@ -1,6 +1,11 @@
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 0;
 }
+
+/* Container Styling */
 .container {
   max-width: 960px;
   margin: 2rem auto;
@@ -17,6 +22,7 @@ body {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+/* Image Container */
 .image-container {
   text-align: center;
   margin-bottom: 20px;
@@ -28,6 +34,11 @@ body {
   display: inline-block;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.image-container img:hover {
+  transform: scale(1.05);
 }
 
 .image-name {
@@ -36,6 +47,7 @@ body {
   color: #555;
 }
 
+/* Result Container */
 .result-container {
   margin-top: 20px;
 }
@@ -43,10 +55,19 @@ body {
 .results {
   margin-bottom: 15px;
   font-size: 1.2em;
+  color: #333;
 }
 
+.results strong {
+  color: #007bff;
+}
+
+/* Form Section */
 .form-section {
   margin-top: 20px;
+  padding: 1rem;
+  background-color: #f9fafb;
+  border-radius: 10px;
 }
 
 .form-field {
@@ -57,6 +78,7 @@ body {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
+  color: #333;
 }
 
 textarea, select {
@@ -67,12 +89,13 @@ textarea, select {
   border-radius: 5px;
   box-sizing: border-box;
   resize: vertical;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 textarea:focus, select:focus {
   border-color: #66afe9;
   outline: none;
+  box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
 }
 
 .button-section {
@@ -87,11 +110,17 @@ button {
   border-radius: 5px;
   font-size: 1em;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
   background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 /* Responsive Design */
@@ -123,4 +152,38 @@ button:hover {
   textarea {
     padding: 10px;
   }
+}
+
+/* Additional Enhancements */
+body {
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.error {
+  color: #FF4136;
+  font-size: 1.1em;
+  margin-top: 5px;
+  text-align: center;
+}
+
+ul {
+  padding-left: 20px;
+  list-style: disc;
+}
+
+li {
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 1.1em;
 }

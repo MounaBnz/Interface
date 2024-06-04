@@ -1,17 +1,13 @@
-<!-- <p>home works!</p> -->
-<app-header></app-header> <!-- This line includes the header component -->
-
+<app-header></app-header>
 
 <!-- Hero Section -->
 <section class="hero-section">
   <div class="hero-content">
-    <h1>Révolutionnez l'évaluation embryonnaire avec GenAI </h1>
+    <h1>Révolutionnez l'évaluation embryonnaire avec GenAI</h1>
     <p>Téléchargez une image et laissez la précision de l'intelligence artificielle noter la qualité.</p>
     <button (click)="onAnalyzeClick()" class="btn btn-primary">Analyser l'embryon</button>
-
   </div>
 </section>
-
 
 <!-- Features Section -->
 <section class="features-section">
@@ -28,22 +24,36 @@
   <div class="feature">
     <img src="./../../assets/images/ideas.png" alt="Idées" class="icon">
     <h3>Conseils personnalisés</h3>
-    <p>Plus qu'une simple classification – GenAI fournit des conseils personnalisés, adaptés à chaque cas, pour accompagner les professionnels vers les meilleures issues possibles.s</p>
+    <p>Plus qu'une simple classification – GenAI fournit des conseils personnalisés, adaptés à chaque cas, pour accompagner les professionnels vers les meilleures issues possibles.</p>
   </div>
-  <!-- Répétez pour d'autres fonctionnalités -->
 </section>
-
-
-
-
 
 <!-- Contact Section -->
 <section class="contact-section">
-  <h2>Contact Us</h2>
-  <!-- Contact details or form -->
+  <div class="contact-content">
+    <h2>Contactez-Nous</h2>
+    <!-- <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm"> -->
+      <form #contactForm="ngForm">
+        <div class="form-group">
+        <label for="name">Nom</label>
+        <input type="text" id="name" name="name" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" ngModel required></textarea>
+      </div>
+      <!-- <button type="submit" class="btn btn-primary" [disabled]="!contactForm.valid">Envoyer</button> -->
+      <button type="submit" class="btn btn-primary" >Envoyer</button>
+    </form>
+  </div>
 </section>
+
 
 <!-- Footer -->
 <footer class="site-footer">
-  <!-- Footer content -->
+  <p>© 2023 GenAI. All rights reserved.</p>
 </footer>

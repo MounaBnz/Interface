@@ -1,39 +1,39 @@
-<div *ngIf="error" class="error">{{ error }}</div>
-<div *ngIf="!error && analysisResults.length === 0">No embryo images found.</div>
-<div *ngIf="analysisResults.length > 0">
-  <ul>
+<div *ngIf="error" class="error text-red-500 text-lg mb-4">{{ error }}</div>
+<div *ngIf="!error && analysisResults.length === 0" class="text-gray-700 text-lg mb-4">No embryo images found.</div>
+<div *ngIf="analysisResults.length > 0" class="space-y-6">
+  <ul class="space-y-6">
     <li *ngFor="let embryo of analysisResults" class="embryo-item">
-      <div class="container">
-        <h2>Your Analyzed Embryo</h2>
+      <div class="container bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Your Analyzed Embryo</h2>
         <div *ngIf="embryo" class="embryo-details">
-          <div class="image-container">
-            <img [src]="embryo.image_path" alt="Uploaded Embryo Image">
-            <div class="image-name">{{ embryo.image_name }}</div>
+          <div class="image-container mb-4">
+            <img [src]="embryo.image_path" alt="Uploaded Embryo Image" class="w-full h-64 object-cover rounded-lg shadow-md">
+            <div class="image-name text-center text-lg font-medium text-gray-700 mt-2">{{ embryo.image_name }}</div>
           </div>
-          <div class="result-container">
-            <div class="results">
+          <div class="result-container space-y-2">
+            <div class="results text-lg text-gray-800">
               <strong>Score:</strong> {{ embryo.result }}
             </div>
-            <div class="results">
+            <div class="results text-lg text-gray-800">
               <strong>Note:</strong> {{ embryo.note }}
             </div>
-            <div class="results">
+            <div class="results text-lg text-gray-800">
               <strong>Suggested Value:</strong> {{ embryo.suggested_value }}
             </div>
-            <div class="form-section">
-              <h3>Update Details:</h3>
-              <div class="form-field">
-                <label>Note:</label>
-                <textarea [(ngModel)]="notes[embryo.image_path]" placeholder="Add your comments here..."></textarea>
+            <div class="form-section mt-6 p-4 bg-gray-100 rounded-lg">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">Update Details:</h3>
+              <div class="form-field mb-4">
+                <label class="block text-gray-700 mb-2">Note:</label>
+                <textarea [(ngModel)]="notes[embryo.image_path]" placeholder="Add your comments here..." class="w-full p-2 border border-gray-300 rounded-lg"></textarea>
               </div>
-              <div class="form-field">
-                <label>Select a Value:</label>
-                <select [(ngModel)]="selectedValues[embryo.image_path]">
+              <div class="form-field mb-4">
+                <label class="block text-gray-700 mb-2">Select a Value:</label>
+                <select [(ngModel)]="selectedValues[embryo.image_path]" class="w-full p-2 border border-gray-300 rounded-lg">
                   <option *ngFor="let value of suggestedValues" [value]="value">{{ value }}</option>
                 </select>
               </div>
-              <div class="button-section">
-                <button (click)="validateAndPostForm(embryo)">Validate Form</button>
+              <div class="button-section text-center">
+                <button (click)="validateAndPostForm(embryo)" class="bg-blue-600 text-white py-2 px-4 rounded shadow hover:bg-blue-700 transition duration-200 ease-in-out">Validate Form</button>
               </div>
             </div>
           </div>
