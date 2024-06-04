@@ -1,3 +1,6 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
 .container {
   max-width: 960px; /* Increase the maximum width */
   margin: 2rem auto; /* Add more top and bottom margin */
@@ -25,10 +28,6 @@
   margin-top: 5px;
 }
 
-.btn-analyze:disabled {
-  background-color: #ccc; /* Grayed out button when form is invalid */
-}
-
 .title {
   color: #050B24;
   text-align: center;
@@ -41,7 +40,7 @@
   text-align: left; /* Center the instructions */
 }
 
-.upload-section, .description-section {
+.upload-section {
   display: flex;
   flex-direction: column;
   margin-bottom: 1.5rem; /* Less space between form sections for a tighter look */
@@ -67,22 +66,38 @@ textarea {
   resize: vertical; /* Allows vertical resize only */
 }
 
-.btn-analyze {
-  background-color: #20afec;
-  color: white;
+.btn-clear, .btn-analyze {
   display: block; /* Or inline-block, if you prefer */
   width: auto; /* Adjust width as needed, or set a specific width */
   padding: 12px 25px; /* Balanced padding */
   font-size: 1rem; /* Appropriate font size */
   margin: 1rem auto; /* Top and bottom margin as needed, auto on the sides to center */
   cursor: pointer;
+  border: none;
+  border-radius: 5px;
   transition: background-color 0.3s ease, transform 0.2s ease; /* Smoother transitions */
+  color: white;
+}
+
+.btn-clear {
+  background-color: #f44336; /* Red background for clear button */
+}
+
+.btn-analyze {
+  background-color: #20afec; /* Blue background for analyze button */
+}
+
+.btn-clear:hover, .btn-clear:focus, .btn-analyze:hover, .btn-analyze:focus {
+  transform: translateY(-2px); /* Lift effect on hover for interactivity */
+  box-shadow: 0 4px 6px rgba(55, 255, 149, 0.2); /* Subtle shadow for depth */
+}
+
+.btn-clear:hover, .btn-clear:focus {
+  background-color: #d32f2f; /* Darker red for clear button on hover */
 }
 
 .btn-analyze:hover, .btn-analyze:focus {
-  background-color: #3086d6;
-  transform: translateY(-2px); /* Lift effect on hover for interactivity */
-  box-shadow: 0 4px 6px rgba(55, 255, 149, 0.2); /* Subtle shadow for depth */
+  background-color: #3086d6; /* Darker blue for analyze button on hover */
 }
 
 /* Responsive Design */
@@ -93,12 +108,12 @@ textarea {
     padding: 1rem;
   }
 
-  .title, .upload-section, .description-section {
+  .title, .upload-section {
     text-align: left; /* Align elements to the left on smaller screens */
   }
 
-  .btn-analyze {
-    display: block; /* Full width button for easier tapping on mobile */
+  .btn-clear, .btn-analyze {
+    width: 100%; /* Full width button for easier tapping on mobile */
   }
 }
 
@@ -107,14 +122,7 @@ textarea {
     font-size: 24px; /* Adjust title size for very small screens */
   }
 
-  .btn-analyze {
+  .btn-clear, .btn-analyze {
     padding: 10px 20px; /* Adjust button padding for smaller screens */
   }
-}
-
-.analysis-results {
-  margin-top: 20px;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
 }

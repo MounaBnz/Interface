@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { EmbryoService } from '../embryo.service';
+// import { EmbryoService } from '../embryo.service';
 import { FormsModule } from '@angular/forms';
-import { ImageUploadService } from '../image-upload.service';
-import { Router } from '@angular/router';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {API_URL} from '../env'
+import {FileUploadServiceService } from '../services/file-upload.service';
 
 @Component({
   selector: 'app-analyse-embryon',
@@ -11,49 +12,71 @@ import { Router } from '@angular/router';
   styleUrls: ['./analyse-embryon.component.css']
 })
 export class AnalyseEmbryonComponent {
-  fileErrorMsg: string | null = null;
-  analysisResults: any = null;
   selectedFile: File | null = null;
+  fileErrorMsg: string = '';
+  message: string |null=null;
+  imageUrl: string | null=null;
+  selectedFiles?: FileList;
+  progress = 0;
+  preview = '';
+  embryo_result: string |null=null;
 
-  constructor(private embryoService: EmbryoService, private toastr: ToastrService, private imageUploadService: ImageUploadService, private router: Router) {}
+  constructor(private toastr: ToastrService,private fileUploadService:FileUploadServiceService,private http: HttpClient) {}
+  ngOnInit() {
+    this.fileUploadService.getData().subscribe((data: any) => {
+      this.message = data.message;
+      console.log(this.message)
+    });
 
-  onFileSelected(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files[0]) {
-      const file = input.files[0];
-      const validTypes = ['image/png', 'image/jpeg', 'image/jpg'];
-      if (validTypes.includes(file.type)) {
-        this.selectedFile = file;
-      } else {
-        this.toastr.error('Unsupported file format. Please upload a PNG or JPEG image.', 'Error!');
-        this.selectedFile = null;
-      }
-    }
   }
 
-  onSubmit() {
-    if (this.selectedFile) {
-      const formData = new FormData();
-      formData.append('file', this.selectedFile, this.selectedFile.name);
+  onFileSelected(event: any): void {
 
-      this.imageUploadService.uploadImage(this.selectedFile).subscribe(
-        (response: any) => {
-          this.analysisResults = response;
-          console.log('Analysis Results:', this.analysisResults);
-          this.toastr.success('Your embryo has been successfully analyzed!', 'Success');
-          localStorage.setItem('analysisResults', JSON.stringify(this.analysisResults));
-          this.router.navigate(['/list']); // Navigate to list
-        },
-        (error) => {
-          console.error('Error:', error);
-          this.fileErrorMsg = 'There was an error analyzing the image.';
-          this.toastr.error('An error occurred while analyzing your embryo.', 'Error');
+      this.message = '';
+      this.preview = '';
+      this.progress = 0;
+      this.selectedFiles = event.target.files;
+
+      if (this.selectedFiles) {
+        const file: File | null = this.selectedFiles.item(0);
+
+        if (file) {
+          this.preview = '';
+          this.selectedFile = file;
+
+          const reader = new FileReader();
+
+          reader.onload = (e: any) => {
+            console.log(e.target.result);
+            this.preview = e.target.result;
+          };
+
+          reader.readAsDataURL(this.selectedFile);
         }
-      );
-    } else {
-      this.fileErrorMsg = 'Please select a file first.';
-      this.toastr.error('Please ensure all fields are filled correctly.', 'Missing Information!');
+      }
+  }
+
+  clearImage() {
+    this.selectedFile = null;
+    this.embryo_result=null;
+    this.preview = '';
+
+  }
+  onSubmit(): void {
+
+    if(this.selectedFile){
+      console.log("file selected")
+      this.fileUploadService.uploadFile(this.selectedFile).subscribe((response)=>{
+      console.log('File uploaded successfully:', response);
+      this.embryo_result=response.image_with_result.result;
+      console.log('result:',this.embryo_result)
+      },
+      (error)=>{
+        console.log('Error uploading file:', error);
+      });
+
     }
+
   }
 
 }
